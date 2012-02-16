@@ -17,12 +17,17 @@ public class Manager {
 	public void interpret(Socket socket, String message){
 		String[] mParts;
 		mParts = message.split(";");
-		if(mParts[0].equals("addServer")){
-			addServer(socket, mParts[1], mParts[2], mParts[3], Integer.parseInt(mParts[4]), Integer.parseInt(mParts[5]));
-		}else if(mParts[0].equals("getServers")){
-			getServers(socket, mParts[1]);
-		}else if(mParts[0].equals("getAllServers")){
-			getAllServers(socket);
+		try{
+			if(mParts[0].equals("addServer")){
+				addServer(socket, mParts[1], mParts[2], mParts[3], Integer.parseInt(mParts[4]), Integer.parseInt(mParts[5]));
+			}else if(mParts[0].equals("getServers")){
+				getServers(socket, mParts[1]);
+			}else if(mParts[0].equals("getAllServers")){
+				getAllServers(socket);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("Probably bad message.");
 		}
 	}
 	
