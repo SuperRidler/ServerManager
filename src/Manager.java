@@ -38,6 +38,7 @@ public class Manager {
 			time = System.nanoTime();
 		}*/
 		synchronized(serverList){
+			updateServer();
 			boolean inAlready = false;
 			for(GameServer gs : serverList){
 				if(gs.getSocket().equals(socket)){
@@ -68,11 +69,8 @@ public class Manager {
 	}
 	
 	private void getServers(Socket socket, String game){
-		/*if((System.nanoTime()-time)>5000000){
-			updateServer();
-			time = System.nanoTime();
-		}*/
 		synchronized(serverList){
+			updateServer();
 			String serverString = "";
 			boolean flag = false;
 			for(GameServer gs : serverList){
@@ -97,11 +95,8 @@ public class Manager {
 	}
 	
 	private void getAllServers(Socket socket){
-		/*if((System.nanoTime()-time)>5000000){
-			updateServer();
-			time = System.nanoTime();
-		}*/
 		synchronized(serverList){
+			updateServer();
 			String serverString = "";
 			int j = serverList.size();
 			for(int i=0; i<j; i+=1){
@@ -134,6 +129,7 @@ public class Manager {
 	
 	private void displayAllServers(){
 		synchronized(serverList){
+			updateServer();
 			System.out.println("Servers:");
 			if(serverList.isEmpty()){
 				System.out.println("No Servers");
