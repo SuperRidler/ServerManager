@@ -17,6 +17,7 @@ public class Server {
 	private void listen( int port ) throws IOException {
 		ss = new ServerSocket( port );
 		System.out.println("Listening on "+ ss);
+		new ConsoleThread(manager);
 		while(true){
 			Socket s = ss.accept();
 			System.out.println("Connection from "+s);

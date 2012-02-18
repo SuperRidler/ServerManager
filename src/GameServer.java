@@ -54,4 +54,9 @@ public class GameServer {
 		return time;
 	}
 	
+	@Override
+	public String toString(){
+		return socket.getInetAddress()+";"+socket.getPort() +";"+game+";"+name+";"+description+";"+currentPlayers+";"+maxPlayers; 
+	}
+	
 }
